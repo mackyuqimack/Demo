@@ -1,0 +1,63 @@
+server:
+  tomcat:
+    max-threads: 800
+    min-spare-threads: 20
+    accesslog:
+      enabled: true
+      directory: /usr/local/springboot-api/
+      pattern: "%h %l %u %t &quot;%r&quot; %s %b"
+      prefix: "localhost_access_log"
+      suffix: ".txt"
+  port: 8080
+spring:
+  datasource:
+    druid:
+      pool-prepared-statements: true
+      filters: stat,wall,log4j
+      filter:
+        stat:
+          enabled: true
+          db-type: oracle
+          log-slow-sql: true
+          slow-sql-millis: 3000
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #reset-enable:
+        login-username: admin
+        login-password: 7815696ecbf1c96e6894b779456d330e
+        allow: 117.154.73.90
+        deny:
+      aop-patterns: com.xykj.service.*
+    type: com.alibaba.druid.pool.DruidDataSource
+    #数据库
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:oracle:thin:@192.168.1.11:1521/orcl
+    username: scott
+    password: 123456
+
+logging:
+  #file: springboot.log
+  level:
+    org:
+      mybatis: INFO
+      springframework: INFO
+    com:
+      xykj:
+        dao: debug
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+#mybatis
+mybatis:
+  type-aliases-package: com.yuqi.demo.entity
+  mapper-locations: classpath:/mapper/*.xml
+#ͨ��mapper
+mapper:
+  mappers:
+    - com.yuqi.demo.dao
+  not-empty: false
+  identity: mysql
