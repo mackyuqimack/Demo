@@ -13,9 +13,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 public class ProjectServiceTest {
 
     @Test
-    public void addProjectTest(){
+    public void getPropertiesTest(){
         PropertiesUtil propertiesUtil =new PropertiesUtil("md5.properties");
         System.out.println(propertiesUtil.getProperty("source.1001"));
+        System.out.println(propertiesUtil.getProperties().getProperty("source.1001"));
+        System.out.println(propertiesUtil.getProperties().get("source.1001"));
     }
 
     @Test
