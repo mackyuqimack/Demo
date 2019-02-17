@@ -1,5 +1,6 @@
 package com.yuqi.demo.common.config;
 
+import com.yuqi.demo.common.Constants;
 import com.yuqi.demo.common.interceptor.ValidationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @date 2018-12-28 09:27:44
  */
 @Configuration
-@MapperScan("com.xykj.dao")
+@MapperScan(Constants.DAO)
 public class ValidationConfig extends WebMvcConfigurerAdapter  {
 
     @Bean

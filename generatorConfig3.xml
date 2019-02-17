@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<context id="context1" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!--通用 Mapper 插件，可以生成带注解的实体类 -->
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers"
+				value="tk.mybatis.mapper.common.Mapper" />
+			<property name="caseSensitive" value="true" />
+			<property name="forceAnnotation" value="true" />
+			<property name="beginningDelimiter" value="`" />
+			<property name="endingDelimiter" value="`" />
+		</plugin>
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@192.168.1.11:1521/orcl"
+			userId="scott" password="123456" />
+		<javaModelGenerator targetPackage="com.xykj.model"
+			targetProject="MybatisDemo" />
+		<sqlMapGenerator targetPackage="mapper.xml"
+			targetProject="MybatisDemo" />
+		<javaClientGenerator targetPackage="com.xykj.dao"
+			targetProject="MybatisDemo" type="XMLMAPPER" />
+		<table schema="scott" tableName="BMLDZS">
+			<!-- <property name="useActualColumnNames" value="true"/> -->
+		</table>
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<context id="context1" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!--通用 Mapper 插件，可以生成带注解的实体类 -->
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers"
+				value="tk.mybatis.mapper.common.Mapper" />
+			<property name="caseSensitive" value="true" />
+			<property name="forceAnnotation" value="true" />
+			<property name="beginningDelimiter" value="`" />
+			<property name="endingDelimiter" value="`" />
+		</plugin>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=utf8"
+			userId="root" password="123456" />
+		<javaModelGenerator targetPackage="com.yuqi.demo.entity"
+			targetProject="Demo" />
+		<sqlMapGenerator targetPackage="mapper.xml"
+			targetProject="Demo" />
+		<javaClientGenerator targetPackage="com.yuqi.demo.dao"
+			targetProject="Demo" type="XMLMAPPER" />
+		<table schema="test" tableName="user">
+		</table>
+	</context>
+</generatorConfiguration>

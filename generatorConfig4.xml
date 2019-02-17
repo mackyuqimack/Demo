@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="context1" targetRuntime="MyBatis3">
+    <property name="javaFileEncoding" value="UTF-8"/>
+    <!-- model新增toString方法 -->
+    <!-- <plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> -->
+    <commentGenerator>
+    	<!-- 添加数据库注释字段 -->
+    	<property name="addRemarkComments" value="true"/>
+    	<!-- 格式化注释时间 -->
+    	<property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+	</commentGenerator>
+ 	<!-- 配置数据源  -->
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@192.168.1.11:1521/orcl"
+			userId="scott" password="123456" />
+		<javaModelGenerator targetPackage="com.xykj.model"
+			targetProject="MybatisDemo" />
+		<sqlMapGenerator targetPackage="mapper.xml"
+			targetProject="MybatisDemo" />
+		<javaClientGenerator targetPackage="com.xykj.dao"
+			targetProject="MybatisDemo" type="XMLMAPPER" />
+		<table schema="scott" tableName="ZDGK_JBXX">
+		</table>
+  </context>
+</generatorConfiguration>
