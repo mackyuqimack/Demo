@@ -90,6 +90,12 @@
       <artifactId>commons-io</artifactId>
       <version>${commons-io.version}</version>
     </dependency>
+    <!-- 通用mapper生成插件 -->
+    <dependency>
+      <groupId>tk.mybatis</groupId>
+      <artifactId>mapper-generator</artifactId>
+      <version>1.0.0</version>
+    </dependency>
   </dependencies>
 
   <build>
