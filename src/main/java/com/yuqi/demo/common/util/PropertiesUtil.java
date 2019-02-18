@@ -30,7 +30,7 @@ public class PropertiesUtil {
         String value = null;
         InputStream is = null;
         try {
-            is = PropertiesUtil.class.getClassLoader().getResourceAsStream(propertiesName);
+            is = this.getClass().getClassLoader().getResourceAsStream(propertiesName);
             Properties p = new Properties();
             p.load(is);
             value = p.getProperty(key);
@@ -58,7 +58,7 @@ public class PropertiesUtil {
         Properties p = new Properties();
         InputStream is = null;
         try {
-            is = PropertiesUtil.class.getClassLoader().getResourceAsStream(propertiesName);
+            is = this.getClass().getClassLoader().getResourceAsStream(propertiesName);
             p.load(is);
         } catch (IOException e) {
             e.printStackTrace();

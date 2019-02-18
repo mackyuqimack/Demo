@@ -28,7 +28,7 @@ spring:
         login-password: 7815696ecbf1c96e6894b779456d330e
         allow: 117.154.73.90
         deny:
-      aop-patterns: com.xykj.service.*
+      aop-patterns: com.yuqi.demo.service.*
     type: com.alibaba.druid.pool.DruidDataSource
     #数据库
     driverClassName: com.mysql.jdbc.Driver
@@ -42,9 +42,7 @@ logging:
     org:
       mybatis: INFO
       springframework: INFO
-    com:
-      xykj:
-        dao: debug
+    com.yuqi.demo.dao: debug
 #pagehelper
 pagehelper:
   helperDialect: mysql
@@ -58,11 +56,11 @@ mybatis:
   configuration:
     call-setters-on-nulls: true
 #tkmapper
-mapper:
-  mappers:
-    - com.yuqi.demo.dao
-  not-empty: false
-  identity: mysql
-  style: camelhumpAndLowercase
-  safeDelete: true
-  safeUpdate: true
+#mapper:
+#  mappers:
+#    - com.yuqi.demo.dao
+#  not-empty: false
+#  identity: mysql
+#  style: camelhumpAndLowercase
+#  safeDelete: true
+#  safeUpdate: true

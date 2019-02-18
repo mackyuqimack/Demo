@@ -2,13 +2,13 @@ package com.yuqi.demo.common.config;
 
 import com.yuqi.demo.common.Constants;
 import com.yuqi.demo.common.interceptor.ValidationInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * 验证权限拦截器配置
