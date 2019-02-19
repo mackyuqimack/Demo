@@ -16,7 +16,7 @@ import java.io.IOException;
  * @author yuqi
  * @date 2018-12-28 09:26:22
  */
-@WebFilter(filterName="requestFilter",urlPatterns={"/api/v1/sync/*"})
+@WebFilter(urlPatterns={"/api/v1/sync/*"})
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RequestFilter implements Filter {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
