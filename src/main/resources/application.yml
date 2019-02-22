@@ -10,6 +10,9 @@ server:
       suffix: ".txt"
   port: 8080
 spring:
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+    time-zone: GMT+8
   datasource:
     druid:
       pool-prepared-statements: true
