@@ -40,7 +40,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
             printWriter.write("{\"code\":401,\"message\":\"时间戳格式不正确\"}");
             return false;
         }
-        Long timestampLong = Long.valueOf(timestamp);
+        long timestampLong = Long.parseLong(timestamp);
         Date date = new Date(timestampLong);
         //当前时间一小时前
         Date beforeTime = CommonUtil.getSomeHourDate(-1);
