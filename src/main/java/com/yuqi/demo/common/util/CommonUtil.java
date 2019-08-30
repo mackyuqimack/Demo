@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -57,7 +57,7 @@ public class CommonUtil {
         if (list == null || list.size() == 0 || len < 1) {
             return null;
         }
-        List<List<T>> result = new ArrayList<>();
+        List<List<T>> result = new LinkedList<>();
         int size = list.size();
         int count = (size + len - 1) / len;
         for (int i = 0; i < count; i++) {

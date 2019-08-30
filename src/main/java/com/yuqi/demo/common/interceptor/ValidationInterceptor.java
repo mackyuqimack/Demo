@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 验证权限拦截器
@@ -21,7 +21,10 @@ import java.util.Map;
  * @date 2018-12-26 14:33:28
  */
 public class ValidationInterceptor implements HandlerInterceptor {
-    private static Map<String, String> propertiesMap = new HashMap<>(16);
+    /**
+     * 存配置文件里的数据，避免每次读取配置文件
+     */
+    private static final Map<String, String> PROPERTIES_MAP = new ConcurrentHashMap<>(16);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -37,7 +40,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
             printWriter.write("{\"code\":401,\"message\":\"时间戳格式不正确\"}");
             return false;
         }
-        Long timestampLong = Long.valueOf(timestamp);
+        long timestampLong = Long.parseLong(timestamp);
         Date date = new Date(timestampLong);
         //当前时间一小时前
         Date beforeTime = CommonUtil.getSomeHourDate(-1);
@@ -50,7 +53,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
         }
         String key = "source." + source;
         //先查询map是否有值,无值则读取配置文件
-        String safeCode = propertiesMap.get(key);
+        String safeCode = PROPERTIES_MAP.get(key);
         if (safeCode == null) {
             PropertiesUtil propertiesUtil = new PropertiesUtil("md5.properties");
             safeCode = propertiesUtil.getProperty(key);
@@ -59,7 +62,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
                 printWriter.write("{\"code\":401,\"message\":\"查询不到此来源信息\"}");
                 return false;
             }
-            propertiesMap.put(key, safeCode);
+            PROPERTIES_MAP.put(key, safeCode);
         }
         String md5 = CommonUtil.parseStrToMd5L32(timestamp + body + safeCode);
         if (!md5.equals(sign)) {
