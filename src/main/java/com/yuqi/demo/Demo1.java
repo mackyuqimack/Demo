@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.kevinsawicki.http.HttpRequest;
 
 public class Demo1 {
 
@@ -68,7 +67,7 @@ public class Demo1 {
 		System.out.println(result2);
 	}
 
-	public static void send2() {
+	/*public static void send2() {
 //		HttpRequest request = HttpRequest.get("https://api.taokouling.com/tkl/tkljm?apikey=%E7%99%BB%E5%BD%95%E5%90%8E%E6%9F%A5%E7%9C%8Bapikey&tkl=%EF%BF%A5dGQeGHRuSf%EF%BF%A5");
 //		request.useProxy("localhost", 8080);
 		String url1 = "http://m.alipayi1.com/?act=save&mobile=" + getTel();
@@ -85,7 +84,7 @@ public class Demo1 {
 //		String result2 = HttpRequest.get(url2).header("X-Requested-With", "XMLHttpRequest")
 //				.header("Referer", "http://m.alipayi1.com/").body();
 		System.out.println(result);
-	}
+	}*/
 
 	/**
 	 * 生成随机密码
@@ -114,7 +113,7 @@ public class Demo1 {
 
 	public static void main(String[] args) {
 		for (int i = 0; i < 1; i++) {
-			send1();
+			send();
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
