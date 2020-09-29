@@ -23,12 +23,12 @@ public class MysqlGenerator {
 
     private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
     private static final String USER_NAME = "root";
-    private static final String PASSWORD = "123456";
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf8";
+    private static final String PASSWORD = "test_1q2w3e4R_456";
+    private static final String JDBC_URL = "jdbc:mysql://dev-mysql.ehaoyao.com:3310/cmsdb?useUnicode=true&characterEncoding=utf8";
     /**
      * 需要生成的表
      */
-    private static final String TABLE = "test";
+    private static final String TABLE = "cms_static_article_class";
     /**
      * 包名
      */
