@@ -13,9 +13,9 @@
 	</commentGenerator>
  	<!-- 配置数据源  -->
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://dev-mysql.ehaoyao.com:3310/cmsdb?characterEncoding=utf8" userId="root" password="test_1q2w3e4R_456" />
-    <javaModelGenerator targetPackage="com.yuqi.demo.entity" targetProject="D:\workSpace\Demo\src\main\java" />
-    <sqlMapGenerator targetPackage="mapper.xml" targetProject="D:\workSpace\Demo\src\main\java" />
-    <javaClientGenerator targetPackage="com.yuqi.demo.dao" targetProject="D:\workSpace\Demo\src\main\java" type="XMLMAPPER" />
+    <javaModelGenerator targetPackage="com.yuqi.demo.entity" targetProject="src\main\java" />
+    <sqlMapGenerator targetPackage="mapper.xml" targetProject="src\main\java" />
+    <javaClientGenerator targetPackage="com.yuqi.demo.dao" targetProject="src\main\java" type="XMLMAPPER" />
     <table schema="cmsdb" tableName="cms_static_article" >
     </table>
   </context>

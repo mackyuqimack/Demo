@@ -42,6 +42,8 @@ public class MysqlGenerator {
      */
     private static final String MAPPER_DIR ="/src/main/resources/mapper/";
     private static final String AUTHOR = "yuqi";
+    private static final boolean LOMBOK = true;
+    private static final String TABLE_PREFIX = "cms_";
 
     /**
      * RUN THIS
@@ -100,12 +102,12 @@ public class MysqlGenerator {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         //strategy.setSuperEntityClass("com.baomidou.mybatisplus.samples.generator.common.BaseEntity");
-        strategy.setEntityLombokModel(false);
+        strategy.setEntityLombokModel(LOMBOK);
         // strategy.setSuperControllerClass("com.baomidou.mybatisplus.samples.generator.common.BaseController");
         strategy.setInclude(TABLE);
         //strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        strategy.setTablePrefix(TABLE_PREFIX);
         mpg.setStrategy(strategy);
         // 选择 freemarker 引擎需要指定如下加，注意 pom 依赖必须有！
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
