@@ -69,3 +69,12 @@ mybatis:
 #  style: camelhumpAndLowercase
 #  safeDelete: true
 #  safeUpdate: true
+
+#发送
+rocketmq:
+  name-server: localhost:9876 #rocketMQ服务的地址
+  producer:
+    group: shop-producer # 生产者组
+#接收
+#rocketmq:
+#  name-server: localhost:9876 #rocketMQ服务的地址
