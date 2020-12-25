@@ -3,12 +3,15 @@ package com.yuqi.demo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.CountDownLatch2;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -35,21 +38,27 @@ public class RocketMQMessageTypeTest {
         //参数一: topic:tag
         //参数二: 消息体
         //参数三: 回调
-        rocketMQTemplate.asyncSend("test-topic-1", "这是一条异步消息", new SendCallback() {
-            //成功响应的回调
-            @Override
-            public void onSuccess(SendResult result) {
-                System.out.println(result);
-            }
+        int messageCount = 5;
+        // 根据消息数量实例化倒计时计算器
+        final CountDownLatch2 countDownLatch = new CountDownLatch2(messageCount);
+        for (int i = 0; i < messageCount; i++) {
+            rocketMQTemplate.asyncSend("test-topic-1", "这是一条异步消息", new SendCallback() {
+                //成功响应的回调
+                @Override
+                public void onSuccess(SendResult result) {
+                    System.out.println(result);
+                }
 
-            //异常响应的回调
-            @Override
-            public void onException(Throwable throwable) {
-                log.error("e:", throwable);
-            }
-        });
+                //异常响应的回调
+                @Override
+                public void onException(Throwable throwable) {
+                    log.error("e:", throwable);
+                }
+            });
+        }
+        // 等待5s
+        countDownLatch.await(5, TimeUnit.SECONDS);
         log.info("==================");
-        Thread.sleep(300000000);
     }
 
     //单向消息
