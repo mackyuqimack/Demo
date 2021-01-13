@@ -21,7 +21,7 @@ public class RocketMQSendMessageTest {
         producer.start();
 
         //4 构建消息对象,主要是设置消息的主题 标签 内容
-        Message message = new Message("myTopic", "myTag", ("我在发消息").getBytes());
+        Message message = new Message("test-topic-1", "myTag", ("我在发消息").getBytes());
 
         //5 发送消息 第二个参数代表超时时间
         SendResult result = producer.send(message, 10000);
