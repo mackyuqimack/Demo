@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
-    public Result<String> handleException(HttpRequestMethodNotSupportedException e) {
+    public Result<?> handleException(HttpRequestMethodNotSupportedException e) {
         log.error(e.getMessage(), e);
         return Result.fail("不支持' " + e.getMethod() + "'请求");
     }
@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(RuntimeException.class)
-    public Result<String> notFount(RuntimeException e) {
+    public Result<?> notFount(RuntimeException e) {
         log.error("运行时异常:", e);
         return Result.fail("运行时异常:" + e.getMessage());
     }
@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public Result<String> handleException(Exception e) {
+    public Result<?> handleException(Exception e) {
         log.error(e.getMessage(), e);
         return Result.fail("服务器错误，请联系管理员");
     }
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BusinessException.class)
-    public Result<String> businessException(BusinessException e) {
+    public Result<?> businessException(BusinessException e) {
         log.error("业务异常：" + e.getMessage(), e);
         return Result.fail(e.getMessage());
     }
@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BindException.class)
-    public Result<String> validatedBindException(BindException e) {
+    public Result<?> validatedBindException(BindException e) {
         log.error(e.getMessage(), e);
         String message = e.getAllErrors().get(0).getDefaultMessage();
         return Result.fail(message);
@@ -77,7 +77,7 @@ public class GlobalExceptionHandler {
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
-    public Result<String> validatedBindException(ValidationException e) {
+    public Result<?> validatedBindException(ValidationException e) {
         log.error(e.getMessage(), e);
         String message = e.getMessage();
         return Result.fail(message);
