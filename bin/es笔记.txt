@@ -1,0 +1,85 @@
+#ik分词器
+GET _analyze
+{
+ "analyzer": "ik_max_word",
+ "text": "中华人民共和国"
+}
+
+#创建一个索引
+PUT /person
+{
+ "settings": {
+  "number_of_shards": 5,
+  "number_of_replicas": 1
+ }
+}
+
+#查看索引
+GET /person
+
+#删除索引
+DELETE /book
+
+#创建指定类型索引
+PUT /book
+{
+  "settings": {
+    "number_of_shards": 5,
+    "number_of_replicas": 1
+  },
+  "mappings": {
+    "properties": {
+      "name": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "index": true
+      },
+      "author": {
+        "type": "keyword"
+      },
+      "count": {
+        "type": "long"
+      },
+      "onSale": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss || yyyy-MM-dd"
+      },
+      "descr": {
+        "type": "text",
+        "analyzer": "ik_max_word"
+      }
+    }
+  }
+}
+
+#添加数据
+POST /book/_doc
+{
+  "name": "斗罗大陆",
+  "author": "我吃西红柿",
+  "count": 1000,
+  "onSale": "2000-01-01",
+  "descr": "测试2"
+}
+
+#指定id添加数据
+POST /book/_doc/1
+{
+  "name": "七界传说222",
+  "author": "心梦无痕2222",
+  "count": 1000,
+  "onSale": "2000-01-01",
+  "descr": "陆云杀了剑无尘2222"
+}
+
+#修改数据
+POST /book/_update/1
+{
+  "doc": {
+    "name": "七界传说改"
+    
+  }
+}
+
+#根据id删除文档
+DELETE /book/_doc/IcirL3cBcT2OMQoTqCZl
