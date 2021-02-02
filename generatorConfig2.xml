@@ -23,6 +23,6 @@
 		<javaClientGenerator targetPackage="com.yuqi.demo.dao"
 			targetProject="Demo" type="XMLMAPPER" />
 		<table schema="test" tableName="user">
-		</table>
+		</table> 
 	</context>
 </generatorConfiguration>
